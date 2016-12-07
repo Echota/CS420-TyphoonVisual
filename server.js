@@ -1,12 +1,12 @@
 var squel = require("squel");
 var mysql = require("mysql");
 var express = require("express");
-
 var app = express();
+var path = require("path");
 
 var queryCount = 0;
 var count = 0;
-
+app.use(express.static(__dirname));
 
 
 /*
@@ -181,3 +181,6 @@ makequeries([2015, -90, -70, 1495, 1695],function(rows, arr){
 Select t2.YYYYMMDDHH, t2.STORMNAME, t2.LATNS, t2.LONEW from(Select t.YYYYMMDDHH, t.STORMNAME, t.LATNS, t.LONEW, t.CY from (Select * from hurricane_data where YEAR(YYYYMMDDHH) = 1945 AND LATNS > -80 AND LATNS < -60 AND LONEW > 680 AND LONEW < 700) as t Where t.CY = 1) as t2 order by t2.YYYYMMDDHH desc limit 1;
 
 */
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/index.html');
+});

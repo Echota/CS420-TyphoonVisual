@@ -45,7 +45,8 @@ function getStormsByYear(lat,long){
 		}
 		else{
 			year = year.replace(/\s+/g, '');
-			var request = "https://typhoon.herokuapp.com/get/location/";
+			var request = 
+"https://typhoon2.herokuapp.com/get/location/";
 			//var request = 
 "http://127.0.0.1:5000/get/location/";
 			request += "lowLat" + "/" + (lat-10).toString() + "/";
