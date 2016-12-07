@@ -55,8 +55,6 @@ app.all('*', function(req, res, next) {
       next();
     }
 });
-function makequeries(arr, someFun){
-
 
    con.connect(function(err){
       if(err){
@@ -65,6 +63,10 @@ function makequeries(arr, someFun){
       }
       console.log('Connection established');
    });
+
+function makequeries(arr, someFun){
+
+
    con.query('Select Distinct CY  from hurricane_data where YEAR(YYYYMMDDHH) = ? AND LATNS > ? AND LATNS < ? AND LONEW > ? AND LONEW < ?', arr, function(err,rows){
       if(err) throw err;
          console.log("Cy Count successful");
@@ -124,7 +126,7 @@ app.get('/get/location/lowLat/:LowLat/HighLat/:HighLat/lowLong/:lowLong/highLong
            console.log("complete");
            console.log(entry);
            res.send(entry);
-           con.end();
+           //con.end();
 
           }
         })
