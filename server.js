@@ -122,10 +122,10 @@ app.get('/get/location/lowLat/:LowLat/HighLat/:HighLat/lowLong/:lowLong/highLong
            if(queryCount === current){
            console.log(current);
            console.log("complete");
-          // con.end();
-
-           console.log(entry)
+           console.log(entry);
            res.send(entry);
+           con.end();
+
           }
         })
       });
